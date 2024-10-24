@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Task Name="Hoofdschakelaar" Id="{fbf4f241-48e2-4a4b-b480-f341297329ca}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>10000</CycleTime>
+    <Priority>22</Priority>
+    <PouCall>
+      <Name>Hoofdschakelaar_</Name>
+    </PouCall>
+    <TaskFBGuid>{4b4dd69a-ed8e-47ef-acaf-db82bbfabcdc}</TaskFBGuid>
+    <Fb_init>{14c5faac-96d1-4038-b999-951da4b22f9b}</Fb_init>
+    <Fb_exit>{7c140aa4-0596-4f46-9db1-b9546a067787}</Fb_exit>
+    <CycleUpdate>{ce54fc6b-013d-476c-a958-7942553f3f64}</CycleUpdate>
+    <PostCycleUpdate>{867d7dbe-76e3-4ec3-b4e6-826461925d2d}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

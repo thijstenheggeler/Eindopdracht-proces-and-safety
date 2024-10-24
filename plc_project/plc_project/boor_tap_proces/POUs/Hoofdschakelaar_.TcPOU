@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Hoofdschakelaar_" Id="{6f2732b7-697e-4cb4-b219-cb190d32e081}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Hoofdschakelaar_
+VAR
+	 Step: UINT:=0; 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+    // Hoofdschakelaar is true, turn on the lamp
+   
+        IF GVL.Hoofdschakelaar THEN
+            GVL.Lamp_Hoofdschakelaar := TRUE;
+		 ELSE
+            GVL.Lamp_Hoofdschakelaar := FALSE;
+        END_IF;
+]]></ST>
+    </Implementation>
+    <LineIds Name="Hoofdschakelaar_">
+      <LineId Id="22" Count="4" />
+      <LineId Id="31" Count="1" />
+      <LineId Id="29" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

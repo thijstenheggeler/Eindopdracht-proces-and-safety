@@ -7,9 +7,44 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[ CASE Step OF 
+	
+ 	0: 
+		IF GVL.Boor_uit AND GVL.Plaat_Gepositioneerd THEN
+			Step :=1;
+		END_IF
+
+	1:  // Tappen aan zetten
+        IF GVL.Tappen_aan THEN
+			GVL.Tappen_Start := TRUE;
+            Step := 2;
+        END_IF
+		
+    2:  // Tap onderin, Tap gaat terug naar boven
+         IF GVL.Tappen_Pos_Bereikt THEN
+            GVL.Tappen_Retour := TRUE;
+			GVL.Tappen_Start := FALSE;
+             Step := 3;
+        END_IF
+
+    3:  // Tappen uitzetten
+        IF GVL.Tappen_uit THEN
+            GVL.Tappen_Retour := FALSE;
+            Step := 4;
+        END_IF
+		
+	4:   GVL.Plaat_Gepositioneerd := FALSE;
+		 Step:= 1;		
+
+END_CASE]]></ST>
     </Implementation>
     <LineIds Name="Tap_proces">
+      <LineId Id="7" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="32" Count="3" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="8" Count="20" />
       <LineId Id="5" Count="0" />
     </LineIds>
   </POU>
