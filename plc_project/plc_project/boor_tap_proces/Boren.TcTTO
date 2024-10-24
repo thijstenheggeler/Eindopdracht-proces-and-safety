@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Task Name="Boren" Id="{017fae7e-28f7-493b-a7ec-bb87aa40fbb5}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>10000</CycleTime>
+    <Priority>21</Priority>
+    <PouCall>
+      <Name>Boor_porces</Name>
+    </PouCall>
+    <TaskFBGuid>{8e7d4557-2640-425a-b52c-75dc4de75b89}</TaskFBGuid>
+    <Fb_init>{1baeb4b2-496d-4047-a402-8a6ece4f9e4f}</Fb_init>
+    <Fb_exit>{16f877e8-82cb-47d7-9359-315a199fb4ef}</Fb_exit>
+    <CycleUpdate>{aed0282c-1b62-4933-881c-9d9caa996832}</CycleUpdate>
+    <PostCycleUpdate>{2b133962-cde6-4093-b21e-604a896ef1d3}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

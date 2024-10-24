@@ -4,3 +4,5 @@ language = "en"
 multilingual = false
 src = "src"
 title = "Process and safety Eindopdracht"
+[preprocessor.plantuml]
+plantuml-cmd="http://localhost:8080"

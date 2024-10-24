@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Tap_proces" Id="{0ac0ace9-0ca8-4fc3-9270-642751849409}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Tap_proces
+VAR
+	Step: UINT:=0; 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="Tap_proces">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

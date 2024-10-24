@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL" Id="{cfdf6560-9685-41cd-a905-e4d8608aba34}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	
+	
+	//Hoofschakelaar
+    Hoofdschakelaar: BOOL:= FALSE;       // Hoofdschakelaar (knop)
+	Lamp_Hoofdschakelaar: BOOL:= FALSE;  //hoofdschakelaar aan (lamp)
+
+	//Positie plaat
+	Plaat_Gepositioneerd: BOOL := FALSE;   // Positie sensor plaat (knop/lamp)
+	
+    //boor proces
+    Boor_Start: BOOL := FALSE;          //boor aan (lamp)
+    Boor_Retour: BOOL := FALSE;         //Boor terug (lamp)
+	Boor_aan: BOOL := FALSE;      		// Aanknop boor (knop)
+	boor_Pos_Bereikt: BOOL := FALSE;    // Positie sensor boor (sensor)
+	boor_uit: BOOL := FALSE;			// uit knop boor (knop)
+	
+    //Tappen
+	Tappen_Start: BOOL := FALSE;        //Tap aan (lamp)
+    Tappen_Retour: BOOL := FALSE;       //Tap terug (lamp)
+	Tappen_aan: BOOL := FALSE;      	// Aanknop Tap (knop)
+	Tappen_Pos_Bereikt: BOOL := FALSE;  // Positie sensor Tap (sensor)
+	Tappen_uit: BOOL := FALSE;			// uit knop Tap (knop)
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
