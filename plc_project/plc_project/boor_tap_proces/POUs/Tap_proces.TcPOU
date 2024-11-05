@@ -8,43 +8,57 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[ CASE Step OF 
-	
- 	0: 
-		IF GVL.Boor_uit AND GVL.Plaat_Gepositioneerd THEN
-			Step :=1;
-		END_IF
 
-	1:  // Tappen aan zetten
-        IF GVL.Tappen_aan THEN
-			GVL.Tappen_Start := TRUE;
-            Step := 2;
-        END_IF
-		
-    2:  // Tap onderin, Tap gaat terug naar boven
-         IF GVL.Tappen_Pos_Bereikt THEN
-            GVL.Tappen_Retour := TRUE;
-			GVL.Tappen_Start := FALSE;
-             Step := 3;
-        END_IF
+    0: // Boren klaar, plaat zit nog steeds in de klem en hoofdschakelaar staat aan
+    IF NOT GVL.Hoofdschakelaar THEN
+        Step := 0; // Reset als hoofdschakelaar uitgaat
+    ELSIF GVL.Boor_uit AND GVL.Plaat_Gepositioneerd AND GVL.Hoofdschakelaar THEN
+        Step := 1;
+    END_IF
 
-    3:  // Tappen uitzetten
-        IF GVL.Tappen_uit THEN
-            GVL.Tappen_Retour := FALSE;
-            Step := 4;
-        END_IF
-		
-	4:   GVL.Plaat_Gepositioneerd := FALSE;
-		 Step:= 1;		
+    1: // Tappen aan zetten
+    IF NOT GVL.Hoofdschakelaar THEN
+        Step := 0; // Reset als hoofdschakelaar uitgaat
+    ELSIF GVL.Tappen_aan THEN
+        GVL.Tappen_Start := TRUE;
+        Step := 2;
+    END_IF
+
+    2: // Tap onderin, Tap gaat terug naar boven
+    IF NOT GVL.Hoofdschakelaar THEN
+		GVL.Tappen_start := FALSE;
+        Step := 0; // Reset als hoofdschakelaar uitgaat
+    ELSIF GVL.Tappen_Pos_Bereikt THEN
+        GVL.Tappen_Retour := TRUE;
+        GVL.Tappen_Start := FALSE;
+        Step := 3;
+    END_IF
+
+    3: // Tappen uitzetten
+    IF NOT GVL.Hoofdschakelaar THEN
+		GVL.Tappen_Retour := FALSE;
+        Step := 0; // Reset als hoofdschakelaar uitgaat
+    ELSIF GVL.Tappen_uit THEN
+        GVL.Tappen_Retour := FALSE;
+        Step := 4;
+    END_IF
+
+    4: // Plaat uit de klem
+    IF NOT GVL.Hoofdschakelaar THEN
+        Step := 0; // Reset als hoofdschakelaar uitgaat
+    ELSE
+        GVL.Plaat_Gepositioneerd := FALSE;
+        Step := 0;
+    END_IF
 
 END_CASE]]></ST>
     </Implementation>
     <LineIds Name="Tap_proces">
-      <LineId Id="7" Count="0" />
-      <LineId Id="30" Count="0" />
-      <LineId Id="32" Count="3" />
-      <LineId Id="31" Count="0" />
-      <LineId Id="29" Count="0" />
-      <LineId Id="8" Count="20" />
+      <LineId Id="42" Count="18" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="61" Count="8" />
+      <LineId Id="85" Count="0" />
+      <LineId Id="70" Count="13" />
       <LineId Id="5" Count="0" />
     </LineIds>
   </POU>

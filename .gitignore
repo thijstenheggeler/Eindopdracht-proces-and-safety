@@ -47,3 +47,5 @@ LineIDs.dbg.bak
 *.~u
 *.project.~u
 *.suo
+
+documentatie/src/mdbook-plantuml-img

@@ -8,45 +8,54 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[CASE Step OF
-	
-	0: //Hoofdschakkelaar om zetten lamp gaat aan
-	IF GVL.Hoofdschakelaar THEN
-		Step := 1;
-	END_IF
-	
-    1:  // Plaat in klem plaatsen sensor detecteerd of er een plaat in de klem zit
-        IF GVL.Plaat_Gepositioneerd THEN
-            Step := 2;
-        END_IF
 
-    2:  // Boor aan zetten 
-        IF GVL.Boor_aan THEN
-			GVL.Boor_Start := TRUE;
-            Step := 3;
-        END_IF
-		
-    3:  // Boor onderin, boor gaat terug naar boven
-         IF GVL.boor_Pos_Bereikt THEN
-            GVL.Boor_Retour := TRUE;
-			GVL.Boor_Start := FALSE;
-             Step := 4;
-        END_IF
+    0: // Hoofdschakelaar aan
+    IF GVL.Hoofdschakelaar THEN
+        Step := 1;
+    END_IF
 
-    4:  // Boor uitzetten
-        IF GVL.Boor_uit THEN
-            GVL.Boor_Retour := FALSE;
-			Step:= 0;
-        END_IF
-		
+    1: // Plaat in klem plaatsen, sensor detecteert of er een plaat in de klem zit
+    IF NOT GVL.Hoofdschakelaar THEN
+        Step := 0; // Reset als hoofdschakelaar uitgaat
+    ELSIF GVL.Plaat_Gepositioneerd THEN
+        Step := 2;
+    END_IF
+
+    2: // Boor aan zetten 
+    IF NOT GVL.Hoofdschakelaar THEN
+        Step := 0; // Reset als hoofdschakelaar uitgaat
+    ELSIF GVL.Boor_aan THEN
+        GVL.Boor_Start := TRUE;
+        Step := 3;
+    END_IF
+
+    3: // Boor onderin, boor gaat terug naar boven
+    IF NOT GVL.Hoofdschakelaar THEN
+		GVL.Boor_Start := FALSE;
+        Step := 0; // Reset als hoofdschakelaar uitgaat
+    ELSIF GVL.boor_Pos_Bereikt THEN
+        GVL.Boor_Retour := TRUE;
+        GVL.Boor_Start := FALSE;
+        Step := 4;
+    END_IF
+
+    4: // Boor uitzetten
+    IF NOT GVL.Hoofdschakelaar THEN
+		GVL.Boor_Retour := FALSE;
+        Step := 0; // Reset als hoofdschakelaar uitgaat
+    ELSIF GVL.Boor_uit THEN
+        GVL.Boor_Retour := FALSE;
+        Step := 0;
+    END_IF
+
 END_CASE]]></ST>
     </Implementation>
     <LineIds Name="Boor_porces">
-      <LineId Id="7" Count="2" />
-      <LineId Id="38" Count="0" />
-      <LineId Id="11" Count="23" />
-      <LineId Id="43" Count="0" />
-      <LineId Id="5" Count="0" />
-      <LineId Id="37" Count="0" />
+      <LineId Id="48" Count="23" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="72" Count="8" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="81" Count="5" />
       <LineId Id="36" Count="0" />
     </LineIds>
   </POU>

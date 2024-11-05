@@ -7,9 +7,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-    // Hoofdschakelaar is true, turn on the lamp
-   
+      <ST><![CDATA[    // Hoofdschakelaar aan, lamp gaat branden van de hoofdschakelaar
         IF GVL.Hoofdschakelaar THEN
             GVL.Lamp_Hoofdschakelaar := TRUE;
 		 ELSE
@@ -18,7 +16,8 @@ END_VAR
 ]]></ST>
     </Implementation>
     <LineIds Name="Hoofdschakelaar_">
-      <LineId Id="22" Count="4" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="25" Count="1" />
       <LineId Id="31" Count="1" />
       <LineId Id="29" Count="1" />
     </LineIds>
