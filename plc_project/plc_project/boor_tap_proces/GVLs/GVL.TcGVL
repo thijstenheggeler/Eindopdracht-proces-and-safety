@@ -16,14 +16,14 @@ VAR_GLOBAL
     Boor_Start: BOOL := FALSE;          //boor aan (lamp)
     Boor_Retour: BOOL := FALSE;         //Boor terug (lamp)
 	Boor_aan: BOOL := FALSE;      		// Aanknop boor (knop)
-	boor_Pos_Bereikt: BOOL := FALSE;    // Positie sensor boor (sensor)
+	boor_Pos_Bereikt: BOOL := FALSE;    // Positie sensor boor onderin (sensor)
 	boor_uit: BOOL := FALSE;			// uit knop boor (knop)
 	
     //Tappen
 	Tappen_Start: BOOL := FALSE;        //Tap aan (lamp)
     Tappen_Retour: BOOL := FALSE;       //Tap terug (lamp)
 	Tappen_aan: BOOL := FALSE;      	// Aanknop Tap (knop)
-	Tappen_Pos_Bereikt: BOOL := FALSE;  // Positie sensor Tap (sensor)
+	Tappen_Pos_Bereikt: BOOL := FALSE;  // Positie sensor Tap onderin (sensor)
 	Tappen_uit: BOOL := FALSE;			// uit knop Tap (knop)
 	
 END_VAR]]></Declaration>
